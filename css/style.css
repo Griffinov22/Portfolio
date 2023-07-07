@@ -4,6 +4,7 @@
   /* generic */
   --nav-padding: 0.5rem 3rem;
   --nav-height: 75px;
+  --section-block-p: 2rem;
   /* unique */
 }
 
@@ -12,23 +13,24 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
   font-family: var(--ff);
 }
 
 /* generic styles */
 .nav {
   position: fixed;
+  z-index: 2;
   /* top: calc(var(--nav-height) * -1); */
   top: 0;
   right: 0;
   left: 0;
   background-color: white; /*change me later*/
   height: var(--nav-height);
-  border-bottom: 2px solid black;
 }
 
 section {
-  padding: 2rem;
+  padding-block: var(--section-block-p);
 }
 
 /* unique */
@@ -37,22 +39,41 @@ section {
 }
 
 .hero-section {
+  position: relative;
+  z-index: 1;
   background-image: url("../img/bell-tower.jpg");
   /* override padding to make up for nav */
   padding-block: calc(2rem + var(--nav-height));
-  padding-inline: 20%;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
 }
 
+.hero-section::after {
+  font-size: 3rem;
+  color: white;
+  content: "^";
+  width: 100%;
+  position: absolute;
+  transform: rotate(180deg);
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  animation: arrow-bob forwards 1000ms infinite;
+}
+
 .hero-text {
   width: 50%;
-  text-shadow: 1px 1px 50px darkblue;
-  background-color: white;
+  text-shadow: 1px 1px 75px darkblue;
+  background-color: rgb(29, 89, 255);
+  color: white;
   padding: 0.5rem 2rem;
   border-radius: 20px;
+  mix-blend-mode: hard-light;
 }
 
 .hero-text h1 {
@@ -65,4 +86,93 @@ section {
   font-weight: 500;
 }
 
+.hard-section {
+  background-color: whitesmoke;
+  padding-top: 3rem;
+  height: 500px;
+}
+.section-header {
+  font-size: 2rem;
+  font-weight: 800;
+}
+.scrolling-text-contatiner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+}
+.marquee-container {
+  height: 80%;
+  margin-block: auto;
+  width: 100%;
+}
+.marguee {
+  content: "?<>!%*^?</>${*}$?<>!%*^?</>${*}$?<>!%*^?</>${*}$?<>!%*^?</>${*}$";
+  margin-inline: -2rem;
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 6rem;
+  font-weight: 900;
+  animation: infinite-text-scroll 6s linear infinite;
+  mix-blend-mode: difference;
+  color: red;
+}
+.marguee2 {
+  content: "?<>!%*^?</>${*}$?<>!%*^?</>${*}$?<>!%*^?</>${*}$?<>!%*^?</>${*}$";
+  display: none;
+  margin-inline: -2rem;
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 6rem;
+  font-weight: 900;
+  animation: infinite-text-scroll-hidden 6s linear infinite 6s;
+  color: red;
+}
+.set-2 {
+  line-height: 3.5;
+  animation-direction: reverse;
+}
+.set-3 {
+  line-height: 5.5;
+}
+.scrolling-text-contatiner h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: blue;
+}
+
 /* helpers */
+
+@keyframes arrow-bob {
+  from,
+  to {
+    transform: rotate(180deg) translateY(0);
+  }
+  50% {
+    transform: rotate(180deg) translateY(5px);
+  }
+}
+
+@keyframes infinite-text-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+  from {
+    transform: translateX(0%);
+  }
+}
+@keyframes infinite-text-scroll-hidden {
+  to {
+    display: inline-block;
+    transform: translateX(-50%);
+  }
+  from {
+    transform: translateX(0%);
+  }
+}
