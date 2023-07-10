@@ -1,6 +1,9 @@
 :root {
   --ff: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --primary: #15223b;
+  --secondary: #309dff;
+  --black: #060f2f;
   /* generic */
   --nav-padding: 0.5rem 3rem;
   --nav-height: 75px;
@@ -15,17 +18,28 @@
   margin: 0;
   padding: 0;
   font-family: var(--ff);
+  color: white;
 }
 
 /* generic styles */
+
+body {
+  background-color: var(--primary);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
 .nav {
   position: fixed;
   z-index: 2;
   /* top: calc(var(--nav-height) * -1); */
+  background-color: var(--primary);
   top: 0;
   right: 0;
   left: 0;
-  background-color: white; /*change me later*/
   height: var(--nav-height);
 }
 
@@ -50,30 +64,27 @@ section {
   min-height: 100vh;
 }
 
-.hero-section::after {
-  font-size: 3rem;
-  color: white;
-  content: "^";
-  width: 100%;
+.hero-arrow {
+  width: 40px;
+  display: block;
   position: absolute;
-  transform: rotate(180deg);
-  bottom: 0;
-  right: 0;
+  bottom: 40px;
   left: 0;
+  right: 0;
   margin: auto;
-  display: flex;
-  justify-content: center;
-  animation: arrow-bob forwards 1000ms infinite;
+  transform: rotate(-90deg);
+  animation: arrow-bob 1000ms ease-in-out infinite;
 }
 
 .hero-text {
   width: 50%;
   text-shadow: 1px 1px 75px darkblue;
-  background-color: rgb(29, 89, 255);
+  background-color: var(--secondary);
+  opacity: 90%;
   color: white;
   padding: 0.5rem 2rem;
   border-radius: 20px;
-  mix-blend-mode: hard-light;
+  margin-right: 5%;
 }
 
 .hero-text h1 {
@@ -85,66 +96,53 @@ section {
   font-size: 2rem;
   font-weight: 500;
 }
-
+/* hard section */
 .hard-section {
-  background-color: whitesmoke;
   padding-top: 3rem;
-  height: 500px;
-}
-.section-header {
-  font-size: 2rem;
-  font-weight: 800;
-}
-.scrolling-text-contatiner {
+  height: 500px; /*maybe change*/
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  overflow: hidden;
 }
-.marquee-container {
-  height: 80%;
-  margin-block: auto;
-  width: 100%;
-}
-.marguee {
-  content: "?<>!%*^?</>${*}$?<>!%*^?</>${*}$?<>!%*^?</>${*}$?<>!%*^?</>${*}$";
-  margin-inline: -2rem;
-  white-space: nowrap;
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 6rem;
-  font-weight: 900;
-  animation: infinite-text-scroll 6s linear infinite;
-  mix-blend-mode: difference;
-  color: red;
-}
-.marguee2 {
-  content: "?<>!%*^?</>${*}$?<>!%*^?</>${*}$?<>!%*^?</>${*}$?<>!%*^?</>${*}$";
-  display: none;
-  margin-inline: -2rem;
-  white-space: nowrap;
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 6rem;
-  font-weight: 900;
-  animation: infinite-text-scroll-hidden 6s linear infinite 6s;
-  color: red;
-}
-.set-2 {
-  line-height: 3.5;
-  animation-direction: reverse;
-}
-.set-3 {
-  line-height: 5.5;
-}
-.scrolling-text-contatiner h3 {
+
+.hard-section h3 {
+  /* "Let me make it easy" */
   font-size: 2.5rem;
   font-weight: 700;
-  color: blue;
+  color: var(--secondary);
+  position: absolute;
+  inset: 0;
+  width: min-content;
+  white-space: nowrap;
+  height: min-content;
+  margin: auto;
+}
+
+.marquee-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  overflow: hidden;
+  height: min-content;
+  width: 100%;
+  inset: 0;
+  margin: auto;
+}
+
+.marquee {
+  width: min-content;
+  line-height: 1;
+  font-size: 6rem;
+  color: var(--primary);
+  opacity: 1;
+  font-weight: 900;
+  animation: infinite-text-scroll 15s linear infinite;
+  letter-spacing: 0.1rem;
+  mix-blend-mode: exclusion;
+}
+.marquee:nth-child(even) {
+  animation: infinite-text-scroll-hidden 15s linear infinite 15s;
+}
+.backwards {
+  animation-direction: reverse;
 }
 
 /* helpers */
@@ -152,27 +150,27 @@ section {
 @keyframes arrow-bob {
   from,
   to {
-    transform: rotate(180deg) translateY(0);
+    transform: rotate(-90deg) translateX(0);
   }
   50% {
-    transform: rotate(180deg) translateY(5px);
+    transform: rotate(-90deg) translateX(5px);
   }
 }
 
 @keyframes infinite-text-scroll {
-  to {
-    transform: translateX(-50%);
-  }
   from {
-    transform: translateX(0%);
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-60%);
   }
 }
+
 @keyframes infinite-text-scroll-hidden {
-  to {
-    display: inline-block;
-    transform: translateX(-50%);
-  }
   from {
     transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-60%);
   }
 }
