@@ -2,6 +2,8 @@ const [caroLeft, caroRight] = document.querySelectorAll(".caro-btn");
 const carouselContainer = document.querySelector(".carousel-container");
 const carouselItems = document.querySelectorAll(".caro-item");
 
+const KnowledgeBtns = document.querySelectorAll(".flex-item");
+
 let screenWidth;
 let maxIndex;
 //resets the max viewable items in carosel
@@ -53,3 +55,11 @@ function setMinMaxForCarousel() {
     maxIndex = carouselItems.length - 3;
   }
 }
+
+// knowledge section
+KnowledgeBtns.forEach((el) => {
+  el.addEventListener("click", function (e) {
+    const content = this.children[2];
+    content.classList.toggle("open");
+  });
+});
