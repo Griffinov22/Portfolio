@@ -22,6 +22,9 @@
 }
 
 /* generic styles */
+html {
+  scroll-padding-top: var(--nav-height);
+}
 
 body {
   background-color: var(--primary);
@@ -43,8 +46,14 @@ h2 {
   height: var(--nav-height);
 }
 
+a:any-link {
+  color: var(--secondary);
+}
+
 section {
   padding-block: var(--section-block-p);
+  height: 500px;
+  padding-top: 3rem;
 }
 
 /* unique */
@@ -62,6 +71,20 @@ section {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
+}
+
+.section-header {
+  font-weight: 700;
+}
+
+.sub-header {
+  padding-top: 0.5rem;
+  font-weight: 500;
+  opacity: 0.6;
+  transition: opacity 200ms ease-in-out;
+}
+.sub-header:has(a:hover) {
+  opacity: 1;
 }
 
 .hero-arrow {
@@ -98,8 +121,6 @@ section {
 }
 /* hard section */
 .hard-section {
-  padding-top: 3rem;
-  height: 500px; /*maybe change*/
   position: relative;
 }
 
@@ -143,6 +164,59 @@ section {
 }
 .backwards {
   animation-direction: reverse;
+}
+
+/* knowledge-section */
+.carousel-parent {
+  width: 100%;
+  max-width: 1600px;
+  position: relative;
+}
+
+.carousel-container {
+  gap: 125.5px;
+  width: 1000px;
+  overflow: hidden;
+  position: relative;
+}
+@media screen and (max-width: 1275px) {
+  .carousel-container {
+    width: 625.5px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .carousel-container {
+    width: 250px;
+  }
+}
+.caro-item {
+  flex-basis: 250px;
+  height: 150px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  position: relative;
+  transition: transform 800ms ease-in-out;
+}
+.caro-item img {
+  width: 100%;
+  height: 100%;
+}
+.caro-btn {
+  width: 48px;
+  aspect-ratio: 1/1;
+  background-color: transparent;
+  border: 5px solid var(--secondary);
+  border-radius: 50%;
+  transition: border-color 200ms ease-in-out;
+}
+.caro-btn svg {
+  width: 100%;
+  height: auto;
+  fill: var(--secondary);
+  transition: fill 200ms ease-in-out;
+}
+#right-btn {
+  transform: rotate(180deg);
 }
 
 /* helpers */
