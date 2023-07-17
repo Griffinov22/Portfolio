@@ -80,8 +80,10 @@ section {
 .sub-header {
   padding-top: 0.5rem;
   font-weight: 500;
-  opacity: 0.6;
   transition: opacity 200ms ease-in-out;
+}
+.low-opacity {
+  opacity: 0.6;
 }
 .sub-header:has(a:hover) {
   opacity: 1;
@@ -288,6 +290,111 @@ section {
 .drop-text {
   color: var(--primary);
   font-weight: 600;
+}
+
+/* contact section */
+.contact-section {
+  padding-top: calc(260px + var(--section-block-p));
+  padding-bottom: calc(var(--section-block-p) * 2);
+  height: auto !important;
+}
+.oval {
+  width: 150%;
+  height: 50%;
+  border-radius: 50%;
+  position: absolute;
+  top: -30%;
+  left: -25%;
+  right: 0;
+  margin-inline: auto;
+  background-color: var(--secondary);
+}
+.oval-offset {
+  top: -20% !important;
+  z-index: -1;
+}
+.secondary {
+  background-color: var(--secondary);
+}
+
+.airplane-container {
+  width: 128px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  bottom: -2%;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  display: grid;
+  place-items: center;
+}
+.airplane-container img {
+  width: 70%;
+  height: auto;
+}
+
+.form-container {
+  max-width: 400px;
+}
+.form-container input,
+.form-container textarea {
+  border: none;
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+  transition: all 100ms ease-in-out;
+  color: var(--primary);
+  font-weight: 500;
+}
+.form-container input:focus,
+.form-container textarea:focus {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+.form-container input::placeholder,
+.form-container textarea::placeholder {
+  color: var(--primary);
+  opacity: 0.7;
+}
+.form-container label {
+  font-weight: 700;
+}
+.form-container button {
+  position: relative;
+  display: block;
+  width: min-content;
+  height: auto;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  background-color: var(--secondary);
+  border: none;
+  align-self: center;
+  color: black;
+  font-weight: 600;
+  letter-spacing: 0.02rem;
+  overflow: hidden;
+  transition: color 75ms ease-in-out 300ms;
+}
+.form-container button::before {
+  content: "";
+  z-index: -1;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  top: 0;
+  left: 0;
+  transform: translateX(-110%) skewX(-15deg);
+  transition: transform 750ms ease-in-out;
+}
+.form-container button:hover {
+  opacity: 0.9;
+  color: white;
+}
+.form-container button:hover::before {
+  transform: translateX(110%) skewX(-15deg);
 }
 
 /* helpers */
