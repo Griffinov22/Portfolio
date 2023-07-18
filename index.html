@@ -23,14 +23,16 @@
   <body>
     <header>
       <nav class="d-flex align-items-center nav px-5">
-        <div class="logo-container d-flex align-items-center">
+        <div
+          class="logo-container d-flex align-items-center justify-content-center"
+        >
           <span id="G">G</span><span id="O">O</span>
         </div>
-        <h4 class="nav-name ms-5">Griffin Overmyer</h4>
+        <h4 class="nav-name ms-5 mb-0">Griffin Overmyer</h4>
 
         <ul class="list-unstyled d-flex m-0 gap-5">
-          <li>Works</li>
-          <li>Contact</li>
+          <li><a href="#work-section">Works</a></li>
+          <li><a href="#contact-section">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -85,7 +87,7 @@
         </div>
       </section>
 
-      <section class="work-section position-relative">
+      <section id="work-section" class="work-section position-relative">
         <h2 class="text-center section-header">Work I've done in the past</h2>
         <p class="text-center sub-header low-opacity">
           Need more? Check out my
@@ -347,7 +349,10 @@
         </div>
       </section>
 
-      <section class="contact-section overflow-hidden position-relative">
+      <section
+        id="contact-section"
+        class="contact-section overflow-hidden position-relative"
+      >
         <div class="oval secondary">
           <div class="airplane-container">
             <img src="./img/paper-plane.svg" alt="paper airplane" />
@@ -360,17 +365,24 @@
         <p class="sub-header text-center text-white low-opacity">
           Freelancing, internships, or if you just want to say &lsquo;hi&rsquo;
         </p>
-        <div class="w-50 mx-auto d-flex flex-column gap-2 form-container pt-3">
+        <form
+          method="post"
+          id="contact-form"
+          class="w-50 mx-auto d-flex flex-column gap-2 form-container pt-3"
+          novalidate
+        >
           <div class="d-flex flex-column gap-2">
-            <label for="name">Name</label>
+            <label for="name">Name<span class="validation"></span></label>
+
             <input id="name" type="text" placeholder="Name" class="w-100" />
           </div>
           <div class="d-flex flex-column gap-2">
-            <label for="email">Email</label>
-            <input id="email" type="text" placeholder="Email" class="w-100" />
+            <label for="email">Email<span class="validation"></span></label>
+
+            <input id="email" type="email" placeholder="Email" class="w-100" />
           </div>
           <div class="d-flex flex-column gap-2">
-            <label for="body">Message</label>
+            <label for="body">Message<span class="validation"></span></label>
             <textarea
               rows="2"
               id="body"
@@ -379,8 +391,8 @@
               class="w-100"
             ></textarea>
           </div>
-          <button class="form-btn" type="submit">submit</button>
-        </div>
+          <button class="form-btn mt-2" type="submit">submit</button>
+        </form>
       </section>
     </main>
   </body>
