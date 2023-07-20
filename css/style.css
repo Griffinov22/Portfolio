@@ -437,6 +437,31 @@ section {
   margin: 0;
 }
 
+/* footer */
+.footer {
+  display: block;
+  position: relative;
+  padding-inline: 4rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5.5rem;
+  background-color: var(--secondary);
+}
+
+.footer img {
+  width: 40px;
+  height: auto;
+}
+
+.footer p {
+  font-weight: 400;
+}
+
+.footer-quote {
+  font-weight: 500;
+}
+
 /* helpers */
 
 @keyframes arrow-bob {
