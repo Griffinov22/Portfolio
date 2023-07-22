@@ -71,6 +71,12 @@ KnowledgeBtns.forEach((el) => {
 });
 
 //contact form
+//emailJS provider
+
+//ADD RECAPTCHA ONCE SITE IS LIVE ONLINE!!!!
+(function () {
+  emailjs.init("IDEku8iKh9-zHT9_l");
+})();
 contactForm.addEventListener("submit", function (e) {
   e.preventDefault();
   let errorFlag = false;
@@ -102,6 +108,17 @@ contactForm.addEventListener("submit", function (e) {
   }
 
   if (!errorFlag) {
-    this.submit();
+    emailjs.sendForm("22service_id22", "22contact_form22", this);
+    alert("message was successfully sent");
+    resetAllForm();
+  } else {
+    alert("the message was denied");
   }
 });
+
+const resetAllForm = () => {
+  nameValidation.textContent = "";
+  emailValidation.textContent = "";
+  bodyValidation.textContent = "";
+  contactForm.reset();
+};
