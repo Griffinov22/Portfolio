@@ -154,6 +154,35 @@ section {
   font-size: 2rem;
   font-weight: 500;
 }
+@media screen and (max-width: 1050px) {
+  .hero-text h1 {
+    font-size: 3rem;
+  }
+  .hero-text p {
+    font-size: 1.5rem;
+  }
+  .section-header {
+    font-size: 1.5rem !important;
+  }
+  .subheader {
+    font-size: 1rem !important;
+  }
+  .hard-section h3 {
+    font-size: 1.5rem !important;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+  .hero-text p {
+    font-size: 1rem;
+  }
+  .section-header {
+    font-size: 1.2rem;
+  }
+}
+
 /* hard section */
 .hard-section {
   position: relative;
@@ -283,6 +312,7 @@ section {
   left: 0;
   width: 100%;
   height: auto;
+  pointer-events: none;
   background-color: white;
   border-radius: 5px;
   padding: 0.5rem 0.25rem;
@@ -322,6 +352,16 @@ section {
 .drop-text {
   color: var(--primary);
   font-weight: 600;
+}
+
+@media screen and (max-width: 1075px) {
+  .flex-parent {
+    flex-direction: column;
+    width: 250px !important;
+  }
+  .flex-item {
+    width: 100%;
+  }
 }
 
 /* contact section */
@@ -462,6 +502,11 @@ section {
   font-weight: 500;
 }
 
+@media screen and (max-width: 950px) {
+  .footer h5 {
+    display: none;
+  }
+}
 /* helpers */
 
 @keyframes arrow-bob {
