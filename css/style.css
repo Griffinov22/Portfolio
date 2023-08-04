@@ -284,16 +284,21 @@ section {
 }
 
 /* knowledge-section */
+.knowledge-section {
+  transition: all 300ms ease-in-out;
+}
+
 .flex-item {
+  width: clamp(100px, 33%, 300px);
+}
+
+.flex-button {
   display: flex;
-  position: relative;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  width: 33%;
   height: 40px;
-  max-width: 300px;
-  min-width: min-content;
   background-color: white;
   color: var(--primary);
   border-radius: 5px;
@@ -301,17 +306,16 @@ section {
   padding-inline: 0.5rem;
   border: none;
 }
-.flex-item svg {
+.flex-button svg {
   width: 15px;
   height: auto;
 }
 
-.flex-dropbox {
-  position: absolute;
-  top: calc(100% + 15px);
+.dropbox {
+  position: relative;
+  top: 1.5rem;
   left: 0;
-  width: 100%;
-  height: auto;
+  max-height: 0;
   pointer-events: none;
   background-color: white;
   border-radius: 5px;
@@ -320,14 +324,19 @@ section {
   letter-spacing: -1%;
   transform: translateY(-10px);
   opacity: 0;
-  transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+  transition: transform 200ms ease-in-out, opacity 200ms ease-in-out,
+    max-height 200ms ease-in-out;
+  transition-delay: 0s, 0s, 100ms;
 }
 .open {
   opacity: 1;
   transform: translateY(0);
+  transition: transform 200ms ease-in-out, opacity 200ms ease-in-out,
+    max-height 200ms ease-in-out;
+  transition-delay: 0s, 100ms, 0s;
 }
 
-.flex-dropbox::before {
+.dropbox::before {
   content: "";
   display: block;
   position: absolute;
@@ -338,11 +347,7 @@ section {
   background-image: url("../img/drop-top-arrow.svg");
   background-repeat: no-repeat;
 }
-.flex-dropbox img {
-  width: 32px;
-  aspect-ratio: 1/1;
-}
-.flex-dropbox ul {
+.dropbox ul {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
@@ -352,6 +357,10 @@ section {
 .drop-text {
   color: var(--primary);
   font-weight: 600;
+}
+.dropbox img {
+  width: 32px;
+  aspect-ratio: 1/1;
 }
 
 @media screen and (max-width: 1075px) {
@@ -487,6 +496,12 @@ section {
   right: 0;
   height: 5.5rem;
   background-color: var(--secondary);
+}
+
+@media screen and (max-width: 400px) {
+  .footer {
+    padding-inline: 0.5rem;
+  }
 }
 
 .footer img {

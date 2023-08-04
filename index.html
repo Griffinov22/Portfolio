@@ -171,19 +171,21 @@
           class="d-flex flex-parent justify-content-between gap-5 w-75 mx-auto position-relative"
           style="top: 25%"
         >
-          <button class="flex-item">
-            <h5 class="drop-text">Languages I know</h5>
-            <svg
-              viewBox="0 0 24 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M14.4455 16.0585C13.2495 17.7416 10.7505 17.7416 9.55453 16.0585L1.51014 4.73772C0.0986824 2.75138 1.51887 0 3.95562 0L20.0444 0C22.4811 0 23.9013 2.75138 22.4899 4.73772L14.4455 16.0585Z"
-                fill="#9D9D9D"
-              />
-            </svg>
-            <div class="flex-dropbox">
+          <div class="d-flex flex-column flex-item">
+            <button class="flex-button">
+              <h5 class="drop-text">Languages I know</h5>
+              <svg
+                viewBox="0 0 24 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14.4455 16.0585C13.2495 17.7416 10.7505 17.7416 9.55453 16.0585L1.51014 4.73772C0.0986824 2.75138 1.51887 0 3.95562 0L20.0444 0C22.4811 0 23.9013 2.75138 22.4899 4.73772L14.4455 16.0585Z"
+                  fill="#9D9D9D"
+                />
+              </svg>
+            </button>
+            <div class="dropbox">
               <ul class="w-100 list-unstyled">
                 <li
                   class="d-flex justify-content-between align-content-center px-2"
@@ -227,20 +229,23 @@
                 </li>
               </ul>
             </div>
-          </button>
-          <button class="flex-item">
-            <h5 class="drop-text">Applications I Use</h5>
-            <svg
-              viewBox="0 0 24 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M14.4455 16.0585C13.2495 17.7416 10.7505 17.7416 9.55453 16.0585L1.51014 4.73772C0.0986824 2.75138 1.51887 0 3.95562 0L20.0444 0C22.4811 0 23.9013 2.75138 22.4899 4.73772L14.4455 16.0585Z"
-                fill="#9D9D9D"
-              />
-            </svg>
-            <div class="flex-dropbox">
+          </div>
+
+          <div class="d-flex flex-column flex-item">
+            <button class="flex-button">
+              <h5 class="drop-text">Applications I Use</h5>
+              <svg
+                viewBox="0 0 24 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14.4455 16.0585C13.2495 17.7416 10.7505 17.7416 9.55453 16.0585L1.51014 4.73772C0.0986824 2.75138 1.51887 0 3.95562 0L20.0444 0C22.4811 0 23.9013 2.75138 22.4899 4.73772L14.4455 16.0585Z"
+                  fill="#9D9D9D"
+                />
+              </svg>
+            </button>
+            <div class="dropbox">
               <ul class="w-100 list-unstyled">
                 <li
                   class="d-flex justify-content-between align-content-center px-2"
@@ -294,20 +299,23 @@
                 </li>
               </ul>
             </div>
-          </button>
-          <button class="flex-item">
-            <h5 class="drop-text">Things I am Learning</h5>
-            <svg
-              viewBox="0 0 24 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M14.4455 16.0585C13.2495 17.7416 10.7505 17.7416 9.55453 16.0585L1.51014 4.73772C0.0986824 2.75138 1.51887 0 3.95562 0L20.0444 0C22.4811 0 23.9013 2.75138 22.4899 4.73772L14.4455 16.0585Z"
-                fill="#9D9D9D"
-              />
-            </svg>
-            <div class="flex-dropbox">
+          </div>
+
+          <div class="d-flex flex-column flex-item">
+            <button class="flex-button">
+              <h5 class="drop-text">Things I am Learning</h5>
+              <svg
+                viewBox="0 0 24 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14.4455 16.0585C13.2495 17.7416 10.7505 17.7416 9.55453 16.0585L1.51014 4.73772C0.0986824 2.75138 1.51887 0 3.95562 0L20.0444 0C22.4811 0 23.9013 2.75138 22.4899 4.73772L14.4455 16.0585Z"
+                  fill="#9D9D9D"
+                />
+              </svg>
+            </button>
+            <div class="dropbox">
               <ul class="w-100 list-unstyled">
                 <li
                   class="d-flex justify-content-between align-content-center px-2"
@@ -351,7 +359,7 @@
                 </li>
               </ul>
             </div>
-          </button>
+          </div>
         </div>
       </section>
 
@@ -431,7 +439,9 @@
         <h5 class="footer-quote p-0 m-0">
           There is no finish line for learning. It's a continual process
         </h5>
-        <div class="d-flex justify-content-end align-items-center gap-2">
+        <div
+          class="d-flex justify-content-end align-items-center gap-2 text-nowrap"
+        >
           <p class="footer-auth p-0 m-0">Griffin O</p>
           <p class="footer-auth p-0 m-0">&copy;2023</p>
         </div>

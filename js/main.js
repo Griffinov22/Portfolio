@@ -2,7 +2,8 @@ const [caroLeft, caroRight] = document.querySelectorAll(".caro-btn");
 const carouselContainer = document.querySelector(".carousel-container");
 const carouselItems = document.querySelectorAll(".caro-item");
 
-const KnowledgeBtns = document.querySelectorAll(".flex-item");
+const knowledgeItems = document.querySelectorAll(".flex-item");
+const knowledgeSection = document.querySelector(".knowledge-section");
 
 const contactForm = document.querySelector("#contact-form");
 const [nameInput, emailInput, bodyInput] =
@@ -63,10 +64,32 @@ function setMinMaxForCarousel() {
 }
 
 // knowledge section
-KnowledgeBtns.forEach((el) => {
+knowledgeItems.forEach((el) => {
   el.addEventListener("click", function (e) {
-    const content = this.children[2];
-    content.classList.toggle("open");
+    const dropbox = this.querySelector(".dropbox");
+    dropbox.classList.toggle("open");
+
+    if (dropbox.classList.contains("open")) {
+      dropbox.style.maxHeight = `calc(${dropbox.scrollHeight}px + 1rem)`;
+    } else {
+      dropbox.style.maxHeight = `0px`;
+    }
+    //add margin to bottom of section based on which boxes are open
+    if (window.innerWidth <= 1075) {
+      const openBoxes = document.querySelectorAll(".open");
+      if (openBoxes.length > 0) {
+        let getAddedHeights = [];
+        openBoxes.forEach((el) => {
+          getAddedHeights.push(el.scrollHeight);
+        });
+        console.log(getAddedHeights);
+        getAddedHeights = getAddedHeights.reduce((acc, curr) => (acc += curr));
+        console.log(getAddedHeights);
+        knowledgeSection.style.marginBottom = getAddedHeights + "px";
+      } else {
+        knowledgeSection.style.marginBottom = `0px`;
+      }
+    }
   });
 });
 
