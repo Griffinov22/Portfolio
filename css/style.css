@@ -62,6 +62,12 @@ section {
   font-weight: 600;
   letter-spacing: 0.03rem;
 }
+
+.logo-container {
+  width: 48px;
+  aspect-ratio: 1/1;
+}
+
 .nav-name + ul {
   font-weight: 600;
   font-size: 1.1rem;
