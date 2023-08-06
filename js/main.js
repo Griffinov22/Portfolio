@@ -11,6 +11,18 @@ const [nameInput, emailInput, bodyInput] =
 const [nameValidation, emailValidation, bodyValidation] =
   contactForm.querySelectorAll(".validation");
 
+const hamburgerMenu = document.querySelector("#hamburger-menu");
+const [burgTop, burgMid, burgBottom] =
+  hamburgerMenu.querySelectorAll(".hamburger-row");
+const navList = document.querySelector("#nav-list");
+
+//hamburger menu is iniated when window width <= 700
+hamburgerMenu.addEventListener("click", function (e) {
+  burgTop.classList.toggle("topRotate");
+  burgMid.classList.toggle("midRotate");
+  burgBottom.classList.toggle("bottomRotate");
+});
+
 let screenWidth;
 let maxIndex;
 //resets the max viewable items in carosel
