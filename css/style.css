@@ -37,7 +37,7 @@ h2 {
 
 .nav {
   position: fixed;
-  z-index: 2;
+  z-index: 5;
   /* top: calc(var(--nav-height) * -1); */
   background-color: var(--primary);
   top: 0;
@@ -160,6 +160,38 @@ section {
   font-size: 2rem;
   font-weight: 500;
 }
+
+#hamburger-menu {
+  display: none;
+  width: 21px;
+  height: 21px;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.hamburger-row {
+  width: 21px;
+  height: 3px;
+  border-radius: 10px;
+  background-color: white;
+  transition: all 200ms ease-in-out;
+}
+[data-row="top"],
+[data-row="bottom"] {
+  transform-origin: right;
+}
+.topRotate {
+  transform: rotate(45deg);
+  width: 25px;
+  transform-origin: left;
+}
+.midRotate {
+  opacity: 0;
+}
+.bottomRotate {
+  transform: rotate(-45deg);
+  width: 25px;
+  transform-origin: left;
+}
 @media screen and (max-width: 1050px) {
   .hero-text h1 {
     font-size: 3rem;
@@ -186,6 +218,31 @@ section {
   }
   .section-header {
     font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  #nav-list {
+    /* nav list is above viewport */
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: -130%;
+    width: 100%;
+    background-color: var(--primary);
+    z-index: -1;
+  }
+  #hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width: 500px) {
+  .hero-text {
+    position: relative;
+    margin-inline: auto;
+    width: 90%;
+    bottom: -25%;
   }
 }
 
@@ -273,11 +330,18 @@ section {
 }
 .caro-btn {
   width: 48px;
+  display: grid;
+  place-content: center;
   aspect-ratio: 1/1;
   background-color: transparent;
   border: 5px solid var(--secondary);
   border-radius: 50%;
   transition: border-color 200ms ease-in-out;
+}
+@media screen and (max-width: 400px) {
+  .caro-btn {
+    width: 32px;
+  }
 }
 .caro-btn svg {
   width: 100%;
