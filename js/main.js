@@ -1,3 +1,5 @@
+import * as helper from "./helpers/helpers.js";
+
 const [caroLeft, caroRight] = document.querySelectorAll(".caro-btn");
 const carouselContainer = document.querySelector(".carousel-container");
 const carouselItems = document.querySelectorAll(".caro-item");
@@ -42,10 +44,11 @@ outSideNavItems.forEach((el) => {
 let screenWidth;
 let maxIndex;
 let index = 0;
-//resets the max viewable items in carosel
+
 setMinMaxForCarousel();
 window.addEventListener("resize", () => {
   setMinMaxForCarousel();
+  resetCarousel();
 });
 
 function setMinMaxForCarousel() {
@@ -62,31 +65,25 @@ function setMinMaxForCarousel() {
 caroRight.addEventListener("click", function () {
   if (index < maxIndex) {
     index++;
-    caroLeft.style.borderColor = "var(--secondary)";
-    caroLeft.children[0].style.fill = "var(--secondary)";
+    helper.setCaroArrowColor("left", "blue");
+    helper.moveCarousel(index);
 
-    carouselItems.forEach((el) => {
-      el.style.transform = `translateX(-${375.5 * index}px)`;
-    });
     if (index === maxIndex) {
-      caroRight.style.borderColor = "darkgrey";
-      caroRight.children[0].style.fill = "darkgrey";
+      helper.setCaroArrowColor("right", "grey");
     }
   }
 });
 caroLeft.addEventListener("click", function () {
   if (index > 0) {
     index--;
-    caroRight.style.borderColor = "var(--secondary)";
-    caroRight.children[0].style.fill = "var(--secondary)";
+    helper.setCaroArrowColor("right", "blue");
+    helper.moveCarousel(index);
 
-    carouselItems.forEach((el) => {
-      el.style.transform = `translateX(-${375.5 * index}px)`;
-    });
     if (index === 0) {
-      caroLeft.style.borderColor = "darkgrey";
-      caroLeft.children[0].style.fill = "darkgrey";
+      helper.setCaroArrowColor("left", "grey");
     }
+  } else if (index === 0) {
+    helper.setCaroArrowColor("left", "grey");
   }
 });
 
@@ -109,9 +106,7 @@ knowledgeItems.forEach((el) => {
         openBoxes.forEach((el) => {
           getAddedHeights.push(el.scrollHeight);
         });
-        console.log(getAddedHeights);
         getAddedHeights = getAddedHeights.reduce((acc, curr) => (acc += curr));
-        console.log(getAddedHeights);
         knowledgeSection.style.marginBottom = getAddedHeights + "px";
       } else {
         knowledgeSection.style.marginBottom = `0px`;
@@ -160,15 +155,8 @@ contactForm.addEventListener("submit", function (e) {
   if (!errorFlag) {
     emailjs.sendForm("22service_id22", "22contact_form22", this);
     alert("message was successfully sent");
-    resetAllForm();
+    helper.resetAllForm();
   } else {
     alert("the message was denied");
   }
 });
-
-const resetAllForm = () => {
-  nameValidation.textContent = "";
-  emailValidation.textContent = "";
-  bodyValidation.textContent = "";
-  contactForm.reset();
-};
