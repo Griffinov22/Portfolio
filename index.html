@@ -36,13 +36,16 @@
           <li><a href="#work-section">Works</a></li>
           <li><a href="#contact-section">Contact</a></li>
         </ul>
-
         <div id="hamburger-menu">
           <span class="hamburger-row" data-row="top"></span>
           <span class="hamburger-row" data-row="middle"></span>
           <span class="hamburger-row" data-row="bottom"></span>
         </div>
       </nav>
+      <ul id="nav-list-outside" class="list-unstyled d-flex m-0 gap-5">
+        <li><a href="#work-section">Works</a></li>
+        <li><a href="#contact-section">Contact</a></li>
+      </ul>
     </header>
     <main>
       <section
@@ -118,35 +121,54 @@
           <div
             class="d-flex py-5 align-items-center flex-nowrap carousel-container"
           >
-            <div class="caro-item bg-white p-3 rounded">
+            <div
+              class="caro-item bg-white p-3 rounded"
+              data-desc="This a group project I completed at Purdue University using HTML,CSS, and JS along with Figma for prototyping and design"
+              onclick="window.open(`https://coffee-logic.netlify.app/`,'_blank')"
+            >
               <img
                 class="rounded-2 object-fit-cover"
                 src="./img/coffee-logic 1.png"
                 alt="screenshot of website I have worked on"
               />
             </div>
-            <div class="caro-item bg-white p-3 rounded">
+            <div
+              class="caro-item bg-white p-3 rounded smaller-desc"
+              data-desc="This confidential project was a full-stack application using ASP.NET and Entity Framework for a company over the 2023 summer"
+            >
               <img
                 class="rounded-2"
                 src="./img/fwmetals-3944521380 1.png"
                 alt="screenshot of website I have worked on"
               />
             </div>
-            <div class="caro-item bg-white p-3 rounded">
+            <div
+              class="caro-item bg-white p-3 rounded"
+              data-desc="I contributed on Purdue Student Governments website development. It contains plugins for excel sheets."
+              onclick="window.open(`https://purduesg.org/`,'_blank')"
+            >
               <img
                 class="rounded-2 object-fit-cover"
                 src="./img/student-gov 1.png"
                 alt="screenshot of website I have worked on"
               />
             </div>
-            <div class="caro-item bg-white p-3 rounded">
+            <div
+              class="caro-item bg-white p-3 rounded"
+              data-desc="This website was a practice website for me when I was learning how to use REST API's in JS"
+              onclick="window.open(`https://griffin-summer-project-2022.netlify.app/`,'_blank')"
+            >
               <img
                 class="rounded-2 object-fit-cover"
                 src="./img/weather-app 1.png"
                 alt="screenshot of website I have worked on"
               />
             </div>
-            <div class="caro-item bg-white p-3 rounded">
+            <div
+              class="caro-item bg-white p-3 rounded"
+              data-desc="This two player game built completely in JS involves rolling a dice to gain points, but if you roll a '1,' you lose your hand! First to 100 wins."
+              onclick="window.open(`https://griffin-hold-dice-game.netlify.app/`,'_blank')"
+            >
               <img
                 class="rounded-2 object-fit-cover"
                 src="./img/dice-game 1.png"

@@ -14,24 +14,50 @@ const [nameValidation, emailValidation, bodyValidation] =
 const hamburgerMenu = document.querySelector("#hamburger-menu");
 const [burgTop, burgMid, burgBottom] =
   hamburgerMenu.querySelectorAll(".hamburger-row");
-const navList = document.querySelector("#nav-list");
+const navListOutside = document.querySelector("#nav-list-outside");
+const outSideNavItems = navListOutside.querySelectorAll("li");
 
 //hamburger menu is iniated when window width <= 700
 hamburgerMenu.addEventListener("click", function (e) {
+  //makes burger animation
   burgTop.classList.toggle("topRotate");
   burgMid.classList.toggle("midRotate");
   burgBottom.classList.toggle("bottomRotate");
+  //toggles showing the dropdown navigator
+  navListOutside.style.top =
+    navListOutside.style.top === "" || navListOutside.style.top === "0px"
+      ? "var(--nav-height)"
+      : "0px";
+});
+outSideNavItems.forEach((el) => {
+  el.addEventListener("click", function (e) {
+    //if a dropdown element is clicked then, reset dropdown nav and hamburger menu
+    el.parentElement.style.top = "0px";
+    burgTop.classList.remove("topRotate");
+    burgMid.classList.remove("midRotate");
+    burgBottom.classList.remove("bottomRotate");
+  });
 });
 
 let screenWidth;
 let maxIndex;
+let index = 0;
 //resets the max viewable items in carosel
 setMinMaxForCarousel();
 window.addEventListener("resize", () => {
   setMinMaxForCarousel();
 });
 
-let index = 0;
+function setMinMaxForCarousel() {
+  screenWidth = window.innerWidth;
+  if (screenWidth <= 850) {
+    maxIndex = carouselItems.length - 1;
+  } else if (screenWidth <= 1275) {
+    maxIndex = carouselItems.length - 2;
+  } else {
+    maxIndex = carouselItems.length - 3;
+  }
+}
 
 caroRight.addEventListener("click", function () {
   if (index < maxIndex) {
@@ -63,17 +89,6 @@ caroLeft.addEventListener("click", function () {
     }
   }
 });
-
-function setMinMaxForCarousel() {
-  screenWidth = window.innerWidth;
-  if (screenWidth <= 850) {
-    maxIndex = carouselItems.length - 1;
-  } else if (screenWidth <= 1275) {
-    maxIndex = carouselItems.length - 2;
-  } else {
-    maxIndex = carouselItems.length - 3;
-  }
-}
 
 // knowledge section
 knowledgeItems.forEach((el) => {
