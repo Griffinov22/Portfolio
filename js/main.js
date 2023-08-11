@@ -49,7 +49,6 @@ setMaxForCarousel();
 window.addEventListener("resize", () => {
   setMaxForCarousel();
   index = helper.resetCarousel(index);
-  console.log(index);
 });
 
 function setMaxForCarousel() {
@@ -155,9 +154,22 @@ contactForm.addEventListener("submit", function (e) {
 
   if (!errorFlag) {
     emailjs.sendForm("22service_id22", "22contact_form22", this);
-    alert("message was successfully sent");
     helper.resetAllForm();
-  } else {
-    alert("the message was denied");
+    Popup(nameInput.value, true);
   }
 });
+
+function Popup(name) {
+  //this popup currently is created on a successsful contact form submission
+  let popup = document.createElement("div");
+  popup.classList = "popup-style";
+  popup.innerHTML = `<span style="font-weight: 700; display: block">
+  Successful submission.
+  </span> Thank you, ${name} for your response!`;
+
+  document.body.appendChild(popup);
+  //2500ms for the animation time
+  setTimeout(() => {
+    document.querySelector(".popup-style").remove();
+  }, 2500);
+}

@@ -57,6 +57,7 @@ section {
 }
 
 /* unique */
+
 .nav-name {
   margin-right: auto;
   font-weight: 600;
@@ -618,6 +619,36 @@ section {
   right: 0;
   height: 5.5rem;
   background-color: var(--secondary);
+}
+
+.popup-style {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-inline: 0.5rem;
+  font-weight: 500;
+  width: 200px;
+  height: 100px;
+  top: 20%;
+  right: 5%;
+  border-radius: 10px;
+  animation-name: popup-success;
+  animation-duration: 2500ms;
+  animation-timing-function: ease-in-out;
+}
+@keyframes popup-success {
+  0% {
+    background-color: rgba(0, 222, 0, 0.4);
+  }
+  60% {
+    background-color: rgba(0, 222, 0, 0.8);
+  }
+  100% {
+    background-color: rgba(0, 222, 0, 0.4);
+  }
 }
 
 @media screen and (max-width: 400px) {
