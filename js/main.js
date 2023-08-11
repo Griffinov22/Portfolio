@@ -45,13 +45,14 @@ let screenWidth;
 let maxIndex;
 let index = 0;
 
-setMinMaxForCarousel();
+setMaxForCarousel();
 window.addEventListener("resize", () => {
-  setMinMaxForCarousel();
-  resetCarousel();
+  setMaxForCarousel();
+  index = helper.resetCarousel(index);
+  console.log(index);
 });
 
-function setMinMaxForCarousel() {
+function setMaxForCarousel() {
   screenWidth = window.innerWidth;
   if (screenWidth <= 850) {
     maxIndex = carouselItems.length - 1;

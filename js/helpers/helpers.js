@@ -23,7 +23,7 @@ export function moveCarousel(index) {
   });
 }
 
-export function resetCarousel() {
+export function resetCarousel(index) {
   //resets carousel on resize to prevent cycling button breaking
   index = 0;
   carouselItems.forEach((el) => {
@@ -31,6 +31,7 @@ export function resetCarousel() {
   });
   setCaroArrowColor("left", "blue");
   setCaroArrowColor("right", "blue");
+  return index;
 }
 
 export function setCaroArrowColor(arrowStr, colorStr) {
