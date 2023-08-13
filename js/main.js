@@ -12,6 +12,7 @@ const [nameInput, emailInput, bodyInput] =
   contactForm.querySelectorAll("input, textarea");
 const [nameValidation, emailValidation, bodyValidation] =
   contactForm.querySelectorAll(".validation");
+const reCaptcha = document.querySelector("g-recaptcha")[0];
 
 const hamburgerMenu = document.querySelector("#hamburger-menu");
 const [burgTop, burgMid, burgBottom] =
@@ -152,7 +153,8 @@ contactForm.addEventListener("submit", function (e) {
     bodyValidation.textContent = "";
   }
 
-  if (!errorFlag) {
+  if (!errorFlag && reCaptcha.checked) {
+    console.log(reCaptcha.cheched);
     emailjs.sendForm("22service_id22", "22contact_form22", this);
     helper.resetAllForm();
     Popup(nameInput.value, true);
