@@ -12,7 +12,7 @@ const [nameInput, emailInput, bodyInput] =
   contactForm.querySelectorAll("input, textarea");
 const [nameValidation, emailValidation, bodyValidation] =
   contactForm.querySelectorAll(".validation");
-const reCaptcha = document.querySelector("g-recaptcha")[0];
+const reCaptcha = document.querySelector("g-recaptcha");
 
 const hamburgerMenu = document.querySelector("#hamburger-menu");
 const [burgTop, burgMid, burgBottom] =
