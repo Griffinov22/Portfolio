@@ -21,6 +21,8 @@
       defer
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
     ></script>
+    <!-- reCaptcha -->
+    <script defer src="https://www.google.com/recaptcha/api.js"></script>
     <!---->
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/helpers/helpers.js" type="module"></script>
@@ -447,7 +449,14 @@
               class="w-100"
             ></textarea>
           </div>
-          <button class="form-btn mt-2" type="submit">submit</button>
+          <button
+            class="form-btn mt-2 g-recaptcha"
+            data-sitekey="6Ld7jqAnAAAAAC44yET9ZpxCD__jtV-A9BduOUbp"
+            data-action="submit"
+            type="submit"
+          >
+            submit
+          </button>
         </form>
       </section>
       <foooter class="footer d-flex justify-content-between align-items-center">
