@@ -398,7 +398,7 @@ section {
 }
 .caro-btn svg {
   width: 100%;
-  height: auto;
+  height: 100%;
   fill: var(--secondary);
   transition: fill 200ms ease-in-out;
 }
@@ -619,6 +619,10 @@ section {
   right: 0;
   height: 5.5rem;
   background-color: var(--secondary);
+}
+
+#contact-form {
+  min-width: 280px;
 }
 
 .popup-style {
