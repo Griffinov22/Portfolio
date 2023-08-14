@@ -12,9 +12,7 @@ const [nameInput, emailInput, bodyInput] =
   contactForm.querySelectorAll("input, textarea");
 const [nameValidation, emailValidation, bodyValidation] =
   contactForm.querySelectorAll(".validation");
-const reCaptcha = document
-  .querySelector("#g-recaptcha-response")
-  .setAttribute("required", "required");
+let reCaptcha;
 
 const hamburgerMenu = document.querySelector("#hamburger-menu");
 const [burgTop, burgMid, burgBottom] =
@@ -52,6 +50,11 @@ setMaxForCarousel();
 window.addEventListener("resize", () => {
   setMaxForCarousel();
   index = helper.resetCarousel(index);
+});
+window.addEventListener("load", function () {
+  reCaptcha = document
+    .querySelector("#g-recaptcha-response")
+    .setAttribute("required", "required");
 });
 
 function setMaxForCarousel() {
