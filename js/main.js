@@ -52,9 +52,8 @@ window.addEventListener("resize", () => {
   index = helper.resetCarousel(index);
 });
 window.addEventListener("load", function () {
-  reCaptcha = document
-    .querySelector("#g-recaptcha-response")
-    .setAttribute("required", "required");
+  reCaptcha = document.querySelector("#g-recaptcha-response");
+  reCaptcha.setAttribute("required", "required");
 });
 
 function setMaxForCarousel() {
@@ -156,6 +155,13 @@ contactForm.addEventListener("submit", function (e) {
     errorFlag = true;
   } else {
     bodyValidation.textContent = "";
+  }
+
+  if (reCaptcha.val() === "") {
+    reCaptcha.style.borderColor = "red";
+    errorFlag = true;
+  } else {
+    reCaptcha.style.borderColor = "grey";
   }
 
   if (!errorFlag) {
