@@ -152,15 +152,13 @@ contactForm.addEventListener("submit", function (e) {
     bodyValidation.textContent = "";
   }
   //fix recaptcha required
-  const recaptcha = document.getElementById("recaptcha-anchor");
-  const recaptchaBorder = document.querySelector("rc-anchor-container");
-  if (recaptcha.getAttribute("aria-checked") !== "true") {
-    recaptchaBorder.style.borderColor = "red";
+  const recaptchaResponse = grecaptcha.getResponse();
+
+  if (recaptchaResponse.length > 0) {
+    grecapthaValidation.textContent = "";
+  } else {
     grecapthaValidation.textContent = "reCaptcha is required";
     errorFlag = true;
-  } else {
-    recaptchaBorder.style.borderColor = "#d3d3d3";
-    grecapthaValidation.textContent = "";
   }
 
   if (!errorFlag) {
