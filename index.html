@@ -22,7 +22,7 @@
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
     ></script>
     <!-- reCaptcha -->
-    <script defer src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <!---->
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/helpers/helpers.js" type="module"></script>
@@ -450,8 +450,9 @@
             ></textarea>
           </div>
           <div
+            id="recaptcha"
             class="g-recaptcha"
-            style="margin-inline: auto; justify-self: center"
+            style="align-self: center"
             data-sitekey="6Lf9oaAnAAAAAIaiNK1YMX8TrK2KOX1jVk3c3MWP"
             required
           ></div>
