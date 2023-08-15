@@ -153,7 +153,7 @@ contactForm.addEventListener("submit", function (e) {
   }
   //fix recaptcha required
   const recaptcha = grecaptcha.getResponse("recaptcha");
-  if (response.length === 0) {
+  if (recaptcha.length === 0) {
     alert("Please complete reCaptcha challenge.");
     errorFlag = true;
   }
