@@ -165,15 +165,21 @@ contactForm.addEventListener("submit", function (e) {
     emailjs
       .sendForm("22service_id22", "22contact_form22", this, "IDEku8iKh9-zHT9_l")
       .then(function (res) {
-        console.log("success");
-        console.log(res);
+        //successfull
+        if (res.status === 200) {
+          Popup(nameInput.value, true);
+          helper.resetAllForm();
+        } else {
+          alert(
+            "Your contact form submission ran into an error ): Please try again at a later time."
+          );
+        }
       }),
       function (error) {
-        console.log("error");
-        console.log(error);
+        alert(
+          "Your contact form submission ran into an error ): Please try again later."
+        );
       };
-    helper.resetAllForm();
-    Popup(nameInput.value, true);
   }
   //reset recaptcha on every submission
   grecaptcha.reset();
