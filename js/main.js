@@ -10,7 +10,7 @@ const knowledgeSection = document.querySelector(".knowledge-section");
 const contactForm = document.querySelector("#contact-form");
 const [nameInput, emailInput, bodyInput] =
   contactForm.querySelectorAll("input, textarea");
-const [nameValidation, emailValidation, bodyValidation] =
+const [nameValidation, emailValidation, bodyValidation, grecapthaValidation] =
   contactForm.querySelectorAll(".validation");
 
 const hamburgerMenu = document.querySelector("#hamburger-menu");
@@ -152,10 +152,15 @@ contactForm.addEventListener("submit", function (e) {
     bodyValidation.textContent = "";
   }
   //fix recaptcha required
-  const recaptcha = grecaptcha.getResponse("recaptcha");
-  if (recaptcha.length === 0) {
-    alert("Please complete reCaptcha challenge.");
+  const recaptcha = document.getElementById("recaptcha-anchor");
+  const recaptchaBorder = document.querySelector("rc-anchor-container");
+  if (recaptcha.getAttribute("aria-checked") !== "true") {
+    recaptchaBorder.style.borderColor = "red";
+    grecapthaValidation.textContent = "reCaptcha is required";
     errorFlag = true;
+  } else {
+    recaptchaBorder.style.borderColor = "#d3d3d3";
+    grecapthaValidation.textContent = "";
   }
 
   if (!errorFlag) {
