@@ -12,7 +12,6 @@ const [nameInput, emailInput, bodyInput] =
   contactForm.querySelectorAll("input, textarea");
 const [nameValidation, emailValidation, bodyValidation] =
   contactForm.querySelectorAll(".validation");
-let reCaptcha;
 
 const hamburgerMenu = document.querySelector("#hamburger-menu");
 const [burgTop, burgMid, burgBottom] =
@@ -156,12 +155,11 @@ contactForm.addEventListener("submit", function (e) {
   } else {
     bodyValidation.textContent = "";
   }
-
-  if (reCaptcha.val() === "") {
-    reCaptcha.style.borderColor = "red";
+  //fix recaptcha required
+  const recaptcha = grecaptcha.getResponse("recaptcha");
+  if (response.length === 0) {
+    alert("Please complete reCaptcha challenge.");
     errorFlag = true;
-  } else {
-    reCaptcha.style.borderColor = "grey";
   }
 
   if (!errorFlag) {
