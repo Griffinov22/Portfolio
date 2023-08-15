@@ -166,6 +166,8 @@ contactForm.addEventListener("submit", function (e) {
     helper.resetAllForm();
     Popup(nameInput.value, true);
   }
+  //reset recaptcha on every submission
+  grecaptcha.reset();
 });
 
 function Popup(name) {
