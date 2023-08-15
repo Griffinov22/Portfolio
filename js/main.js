@@ -50,10 +50,6 @@ window.addEventListener("resize", () => {
   setMaxForCarousel();
   index = helper.resetCarousel(index);
 });
-window.addEventListener("load", function () {
-  reCaptcha = document.querySelector("#g-recaptcha-response");
-  reCaptcha.setAttribute("required", "required");
-});
 
 function setMaxForCarousel() {
   screenWidth = window.innerWidth;
