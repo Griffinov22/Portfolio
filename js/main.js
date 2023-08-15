@@ -162,7 +162,21 @@ contactForm.addEventListener("submit", function (e) {
   }
 
   if (!errorFlag) {
-    emailjs.sendForm("22service_id22", "22contact_form22", this);
+    emailjs
+      .sendForm(
+        "22service_id22",
+        "22contact_form22",
+        this,
+        "6Lf9oaAnAAAAAIaiNK1YMX8TrK2KOX1jVk3c3MWP"
+      )
+      .then(function (res) {
+        console.log("success");
+        console.log(res);
+      }),
+      function (error) {
+        console.log("error");
+        console.log(error);
+      };
     helper.resetAllForm();
     Popup(nameInput.value, true);
   }
