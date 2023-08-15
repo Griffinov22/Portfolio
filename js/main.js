@@ -163,12 +163,7 @@ contactForm.addEventListener("submit", function (e) {
 
   if (!errorFlag) {
     emailjs
-      .sendForm(
-        "22service_id22",
-        "22contact_form22",
-        this,
-        "6Lf9oaAnAAAAAIaiNK1YMX8TrK2KOX1jVk3c3MWP"
-      )
+      .sendForm("22service_id22", "22contact_form22", this, "IDEku8iKh9-zHT9_l")
       .then(function (res) {
         console.log("success");
         console.log(res);
