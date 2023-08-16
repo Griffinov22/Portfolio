@@ -390,7 +390,7 @@ section {
   aspect-ratio: 1/1;
   background-color: transparent;
   border: 5px solid var(--secondary);
-  border-radius: 50%;
+  border-radius: 100vw;
   transform-origin: center;
   transition: border-color 200ms ease-in-out;
 }
