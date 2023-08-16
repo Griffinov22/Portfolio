@@ -171,6 +171,29 @@ section {
 .hero-text p {
   font-size: 2rem;
   font-weight: 500;
+  margin: 0;
+}
+@media screen and (max-width: 500px) {
+  .hero-text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    width: 80%;
+    height: 40%;
+    top: -15%;
+    text-align: center;
+  }
+  .hero-text div {
+    flex-grow: 1;
+    display: grid;
+    place-content: center;
+  }
+}
+@media screen and (max-width: 290px) {
+  .hero-text {
+    height: 40%;
+  }
 }
 
 #hamburger-menu {
@@ -260,20 +283,6 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-}
-@media screen and (max-width: 500px) {
-  .hero-text {
-    position: relative;
-    margin-inline: auto;
-    width: 90%;
-    height: 40%;
-    top: -25%;
-  }
-}
-@media screen and (max-width: 290px) {
-  .hero-text {
-    height: 50%;
   }
 }
 
