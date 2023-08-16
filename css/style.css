@@ -383,8 +383,10 @@ section {
 }
 .caro-btn {
   width: 48px;
-  display: grid;
-  place-content: center;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
   aspect-ratio: 1/1;
   background-color: transparent;
   border: 5px solid var(--secondary);
@@ -395,6 +397,7 @@ section {
 @media screen and (max-width: 400px) {
   .caro-btn {
     width: 32px;
+    border-width: 4px;
   }
 }
 .caro-btn svg {
