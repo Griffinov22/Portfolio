@@ -9,7 +9,8 @@ const knowledgeSection = document.querySelector(".knowledge-section");
 
 const contactForm = document.querySelector("#contact-form");
 const [nameInput, emailInput, bodyInput] = contactForm.querySelectorAll("input, textarea");
-const [nameValidation, emailValidation, bodyValidation] = contactForm.querySelectorAll(".validation");
+const [nameValidation, emailValidation, bodyValidation, grecapthaValidation] =
+  contactForm.querySelectorAll(".validation");
 
 const hamburgerMenu = document.querySelector("#hamburger-menu");
 const [burgTop, burgMid, burgBottom] = hamburgerMenu.querySelectorAll(".hamburger-row");
