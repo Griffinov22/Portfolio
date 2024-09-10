@@ -8,14 +8,11 @@ const knowledgeItems = document.querySelectorAll(".flex-item");
 const knowledgeSection = document.querySelector(".knowledge-section");
 
 const contactForm = document.querySelector("#contact-form");
-const [nameInput, emailInput, bodyInput] =
-  contactForm.querySelectorAll("input, textarea");
-const [nameValidation, emailValidation, bodyValidation, grecapthaValidation] =
-  contactForm.querySelectorAll(".validation");
+const [nameInput, emailInput, bodyInput] = contactForm.querySelectorAll("input, textarea");
+const [nameValidation, emailValidation, bodyValidation] = contactForm.querySelectorAll(".validation");
 
 const hamburgerMenu = document.querySelector("#hamburger-menu");
-const [burgTop, burgMid, burgBottom] =
-  hamburgerMenu.querySelectorAll(".hamburger-row");
+const [burgTop, burgMid, burgBottom] = hamburgerMenu.querySelectorAll(".hamburger-row");
 const navListOutside = document.querySelector("#nav-list-outside");
 const outSideNavItems = navListOutside.querySelectorAll("li");
 
@@ -27,9 +24,7 @@ hamburgerMenu.addEventListener("click", function (e) {
   burgBottom.classList.toggle("bottomRotate");
   //toggles showing the dropdown navigator
   navListOutside.style.top =
-    navListOutside.style.top === "" || navListOutside.style.top === "0px"
-      ? "var(--nav-height)"
-      : "0px";
+    navListOutside.style.top === "" || navListOutside.style.top === "0px" ? "var(--nav-height)" : "0px";
 });
 outSideNavItems.forEach((el) => {
   el.addEventListener("click", function (e) {
@@ -118,7 +113,6 @@ knowledgeItems.forEach((el) => {
 //contact form
 //emailJS provider
 
-//ADD RECAPTCHA ONCE SITE IS LIVE ONLINE!!!!
 (function () {
   emailjs.init("IDEku8iKh9-zHT9_l");
 })();
@@ -151,7 +145,7 @@ contactForm.addEventListener("submit", function (e) {
   } else {
     bodyValidation.textContent = "";
   }
-  //fix recaptcha required
+  // recaptcha
   const recaptchaResponse = grecaptcha.getResponse();
 
   if (recaptchaResponse.length > 0) {
@@ -162,23 +156,18 @@ contactForm.addEventListener("submit", function (e) {
   }
 
   if (!errorFlag) {
-    emailjs
-      .sendForm("22service_id22", "22contact_form22", this, "IDEku8iKh9-zHT9_l")
-      .then(function (res) {
-        //successfull
-        if (res.status === 200) {
-          Popup(nameInput.value, true);
-          helper.resetAllForm();
-        } else {
-          alert(
-            "Your contact form submission ran into an error ): Please try again at a later time."
-          );
-        }
-      }),
+    emailjs.sendForm("22service_id22", "22contact_form22", this).then(function (res) {
+      //successfull
+      if (res.status === 200) {
+        Popup(nameInput.value, true);
+        helper.resetAllForm();
+      } else {
+        alert("Your contact form submission ran into an error ): Please try again at a later time.");
+      }
+    }),
       function (error) {
-        alert(
-          "Your contact form submission ran into an error ): Please try again later."
-        );
+        console.log(error);
+        alert("Your contact form submission ran into an error ): Please try again later.");
       };
   }
   //reset recaptcha on every submission
