@@ -1,4 +1,4 @@
-# Portfolio_2023
+# Portfolio
 
 My portfolio made from scratch (HTML, CSS (boostrap is included), JS, emailJS, Google's reCaptcha v2)
 
