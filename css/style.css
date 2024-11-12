@@ -389,6 +389,7 @@ section {
 }
 
 .caro-item img {
+  object-position: top center;
   width: 100%;
   height: 100%;
 }
