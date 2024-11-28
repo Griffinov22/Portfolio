@@ -1,6 +1,23 @@
+import { useEffect } from "react";
 import logo from "../../img/logo.svg";
 
 const Header = () => {
+  const toggleMobileMenu = () => {
+    const navListOutside = document.querySelector<HTMLElement>("#nav-list-outside");
+    const hamburgerMenu = document.querySelector("#hamburger-menu");
+    const [burgTop, burgMid, burgBottom] =
+      hamburgerMenu!.querySelectorAll(".hamburger-row");
+
+    burgTop.classList.toggle("topRotate");
+    burgMid.classList.toggle("midRotate");
+    burgBottom.classList.toggle("bottomRotate");
+
+    navListOutside!.style.top =
+      navListOutside!.style.top === "" || navListOutside!.style.top === "0px"
+        ? "var(--nav-height)"
+        : "0px";
+  };
+
   return (
     <header>
       <nav className="d-flex align-items-center nav px-5">
@@ -21,7 +38,9 @@ const Header = () => {
             <a href="#contact-section">Contact</a>
           </li>
         </ul>
-        <div id="hamburger-menu">
+        <div
+          id="hamburger-menu"
+          onClick={toggleMobileMenu}>
           <span
             className="hamburger-row"
             data-row="top"></span>
@@ -36,10 +55,10 @@ const Header = () => {
       <ul
         id="nav-list-outside"
         className="list-unstyled d-flex m-0 gap-5">
-        <li>
+        <li onClick={toggleMobileMenu}>
           <a href="#work-section">Works</a>
         </li>
-        <li>
+        <li onClick={toggleMobileMenu}>
           <a href="#contact-section">Contact</a>
         </li>
       </ul>
