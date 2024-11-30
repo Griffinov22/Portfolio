@@ -14,14 +14,42 @@ import aspLogo from "../img/drop-logos/asp-dotnet-logo.svg";
 import reactLogo from "../img/drop-logos/react-logo.svg";
 
 const KnowledgeSection = () => {
+  const dropBoxClickHandler = (e: React.MouseEvent) => {
+    const dropbox = e.currentTarget.querySelector<HTMLElement>(".dropbox")!;
+    dropbox.classList.toggle("open");
+
+    if (dropbox.classList.contains("open")) {
+      dropbox.style.maxHeight = `calc(${dropbox.scrollHeight}px + 1rem)`;
+    } else {
+      dropbox.style.maxHeight = `0px`;
+    }
+    //add margin to bottom of section based on which boxes are open
+    if (window.innerWidth <= 1075) {
+      const knowledgeSection = document.querySelector<HTMLElement>(".knowledge-section")!;
+      const openBoxes = document.querySelectorAll<HTMLElement>(".open");
+
+      if (openBoxes.length > 0) {
+        const getAddedHeights: Array<number> = [];
+        openBoxes.forEach((el) => {
+          getAddedHeights.push(el.scrollHeight);
+        });
+
+        const totalHeight = getAddedHeights.reduce((acc, curr) => (acc += curr));
+        knowledgeSection.style.paddingBottom = totalHeight + "px";
+      } else {
+        knowledgeSection.style.paddingBottom = `0px`;
+      }
+    }
+  };
+
   return (
     <section className="knowledge-section position-relative">
       <h2 className="section-header text-center">My knowledge in the web industry</h2>
 
-      <div
-        className="d-flex flex-parent justify-content-between gap-5 w-75 mx-auto position-relative"
-        style={{ top: "25%" }}>
-        <div className="d-flex flex-column flex-item">
+      <div className="d-flex flex-parent justify-content-between gap-5 w-75 mx-auto position-relative pt-5">
+        <div
+          className="d-flex flex-column flex-item"
+          onClick={dropBoxClickHandler}>
           <button className="flex-button">
             <h5 className="drop-text">Languages I know</h5>
             <svg
@@ -80,7 +108,9 @@ const KnowledgeSection = () => {
           </div>
         </div>
 
-        <div className="d-flex flex-column flex-item">
+        <div
+          className="d-flex flex-column flex-item"
+          onClick={dropBoxClickHandler}>
           <button className="flex-button">
             <h5 className="drop-text">Applications I Use</h5>
             <svg
@@ -139,7 +169,9 @@ const KnowledgeSection = () => {
           </div>
         </div>
 
-        <div className="d-flex flex-column flex-item">
+        <div
+          className="d-flex flex-column flex-item"
+          onClick={dropBoxClickHandler}>
           <button className="flex-button">
             <h5 className="drop-text">Things I am Learning</h5>
             <svg

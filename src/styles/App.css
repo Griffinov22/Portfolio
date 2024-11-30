@@ -54,7 +54,7 @@ a:any-link {
 section {
   padding-block: var(--section-block-p);
   background-color: var(--primary);
-  height: 600px;
+  min-height: 600px;
   padding-top: 3rem;
 }
 
