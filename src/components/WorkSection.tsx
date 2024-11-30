@@ -103,21 +103,6 @@ const WorkSection = () => {
         <div className="d-flex py-5 align-items-center flex-nowrap carousel-container">
           <div
             className="caro-item bg-white p-3 rounded"
-            data-desc="This is a fullstact blog built with React, Node.js, and Azure resources. Login uses Microsoft Entra AD."
-            onClick={() =>
-              window.open(
-                `https://mango-grass-04e5f210f.5.azurestaticapps.net/`,
-                "_blank"
-              )
-            }>
-            <img
-              className="rounded-2 object-fit-cover"
-              src={youngTech}
-              alt="screenshot of website I have worked on"
-            />
-          </div>
-          <div
-            className="caro-item bg-white p-3 rounded"
             data-desc="This a group project I completed at Purdue University using HTML,CSS, and JS along with Figma for prototyping and design."
             onClick={() => window.open(`https://coffee-logic.netlify.app/`, "_blank")}>
             <img
@@ -135,6 +120,21 @@ const WorkSection = () => {
             <img
               className="rounded-2 object-fit-cover"
               src={img2048}
+              alt="screenshot of website I have worked on"
+            />
+          </div>
+          <div
+            className="caro-item bg-white p-3 rounded"
+            data-desc="This is a fullstack blog built with React, Node.js, and Azure resources. Login uses Microsoft Entra AD."
+            onClick={() =>
+              window.open(
+                `https://mango-grass-04e5f210f.5.azurestaticapps.net/`,
+                "_blank"
+              )
+            }>
+            <img
+              className="rounded-2 object-fit-cover"
+              src={youngTech}
               alt="screenshot of website I have worked on"
             />
           </div>

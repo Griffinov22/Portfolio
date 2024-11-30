@@ -1,3 +1,6 @@
+import linkedIn from "../../img/linkedin-logo.svg";
+import gitHub from "../../img/github-logo.svg";
+
 const Footer = () => {
   return (
     <footer className="footer d-flex justify-content-between align-items-center">
@@ -6,16 +9,16 @@ const Footer = () => {
           href="https://www.linkedin.com/in/griffinovermyer/"
           target="_blank">
           <img
-            src="./img/linkedin-logo.svg"
-            alt="linked in logo"
+            src={linkedIn}
+            alt="LinkedIn logo"
           />
         </a>
         <a
           href="https://github.com/Griffinov22?tab=repositories"
           target="_blank">
           <img
-            src="./img/github-logo.svg"
-            alt="github logo"
+            src={gitHub}
+            alt="GitHub logo"
           />
         </a>
       </div>
