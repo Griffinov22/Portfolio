@@ -28,8 +28,6 @@ const ContactSection = () => {
     });
 
     for (const [formItem, formVal] of Object.entries(formData)) {
-      console.log(formItem, formVal);
-
       if (formVal.trim() == "") {
         errorFlag = true;
         const validationElement = document.querySelector<HTMLSpanElement>(
@@ -46,14 +44,15 @@ const ContactSection = () => {
     if (captchaRef.current?.getValue()) {
       emailJs
         .sendForm(
-          "22service_id22",
-          "22contact_form22",
+          import.meta.env["VITE_EMAILJS_SERVICE_ID"],
+          import.meta.env["VITE_EMAILJS_TEMPLATE_ID"],
           e.currentTarget,
-          "IDEku8iKh9-zHT9_l"
+          import.meta.env["VITE_EMAILJS_PUBLIC_KEY"]
         )
         .then(
           () => {
             // success
+            setFormData({ name: "", email: "", body: "" });
             toast.success(`Your submission was successful`, {
               position: "top-right",
               autoClose: 5000,
@@ -65,7 +64,6 @@ const ContactSection = () => {
               theme: "light",
               transition: Slide,
             });
-            setFormData({ name: "", email: "", body: "" });
           },
           () => {
             // error
@@ -85,8 +83,7 @@ const ContactSection = () => {
     } else {
       const reCaptchaValidation =
         document.querySelector<HTMLSpanElement>(`.validation-recaptcha`);
-      reCaptchaValidation!.textContent =
-        "ReCaptcha response is not working. Please email instead or try again later.";
+      reCaptchaValidation!.textContent = "Please solve the ReCaptcha";
     }
 
     // reset reCaptcha
