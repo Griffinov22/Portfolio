@@ -60,6 +60,11 @@ section {
 
 /* unique */
 
+/* overriding Toast style from being all white */
+.Toastify__toast-container * {
+  color: #757575;
+}
+
 .nav-name {
   margin-right: auto;
   font-weight: 600;
@@ -731,5 +736,12 @@ section {
   }
   to {
     transform: translateX(-60%);
+  }
+}
+
+@media (max-width: 600px) {
+  iframe[src*="google.com/recaptcha/"] {
+    transform: scale(0.93);
+    transform-origin: 0 0;
   }
 }
