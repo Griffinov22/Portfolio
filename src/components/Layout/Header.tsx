@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import logo from "../../img/logo.svg";
 
 const Header = () => {
