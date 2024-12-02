@@ -20,17 +20,18 @@ const WorkSection = () => {
     // wait till maxIndex is set
     if (maxIndex === 0) return;
     // left arrow has disabled class by default
+    const rightBtn = document.getElementById("right-btn");
+    const leftBtn = document.getElementById("left-btn");
 
     if (index === maxIndex) {
-      const rightBtn = document.getElementById("right-btn");
-      rightBtn!.classList.toggle("btn-disable");
+      rightBtn!.classList.add("btn-disable");
+      leftBtn!.classList.remove("btn-disable");
     } else if (index === 0) {
-      const leftBtn = document.getElementById("left-btn");
-      leftBtn!.classList.toggle("btn-disable");
+      leftBtn!.classList.add("btn-disable");
+      rightBtn!.classList.remove("btn-disable");
     } else {
-      const [leftBtn, rightBtn] = document.querySelectorAll(".caro-btn");
-      leftBtn.classList.remove("btn-disable");
-      rightBtn.classList.remove("btn-disable");
+      leftBtn!.classList.remove("btn-disable");
+      rightBtn!.classList.remove("btn-disable");
     }
 
     const carouselItems = document.querySelectorAll(".caro-item");
