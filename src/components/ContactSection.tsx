@@ -36,56 +36,72 @@ const ContactSection = () => {
         if (validationElement) {
           validationElement.textContent = formItem + " is required";
         }
+      } else if (
+        formItem == "email" &&
+        !/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(formVal)
+      ) {
+        // check if email is correct syntax
+        errorFlag = true;
+        const emailValElement = document.querySelector<HTMLSpanElement>(
+          `.validation-${formItem}`
+        );
+        if (emailValElement) {
+          emailValElement.textContent = "email format is invalid";
+        }
       }
     }
-    // do not continue to try to send if no name, email, or body
-    if (errorFlag) return;
 
-    if (captchaRef.current?.getValue()) {
-      emailJs
-        .sendForm(
-          import.meta.env["VITE_EMAILJS_SERVICE_ID"],
-          import.meta.env["VITE_EMAILJS_TEMPLATE_ID"],
-          e.currentTarget,
-          import.meta.env["VITE_EMAILJS_PUBLIC_KEY"]
-        )
-        .then(
-          () => {
-            // success
-            setFormData({ name: "", email: "", body: "" });
-            toast.success(`Your submission was successful`, {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: false,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Slide,
-            });
-          },
-          (e) => {
-            console.log(e);
-            // error
-            toast.error("Your submission failed. Please try again later.", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: false,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Slide,
-            });
-          }
-        );
-    } else {
+    // reCAPTCHA
+    if (!captchaRef.current?.getValue()) {
+      errorFlag = true;
       const reCaptchaValidation =
         document.querySelector<HTMLSpanElement>(`.validation-recaptcha`);
       reCaptchaValidation!.textContent = "Please solve the ReCaptcha";
     }
+
+    // do not continue to try to send if no name, email, or body
+    if (errorFlag) return;
+
+    // valid contact response
+    emailJs
+      .sendForm(
+        import.meta.env["VITE_EMAILJS_SERVICE_ID"],
+        import.meta.env["VITE_EMAILJS_TEMPLATE_ID"],
+        e.currentTarget,
+        import.meta.env["VITE_EMAILJS_PUBLIC_KEY"]
+      )
+      .then(
+        () => {
+          // success
+          setFormData({ name: "", email: "", body: "" });
+          toast.success(`Your submission was successful`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Slide,
+          });
+        },
+        (e) => {
+          console.log(e);
+          // error
+          toast.error("Your submission failed. Please try again later.", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Slide,
+          });
+        }
+      );
 
     // reset reCaptcha
     captchaRef.current?.reset();
@@ -142,6 +158,7 @@ const ContactSection = () => {
               id="user_email"
               name="user_email"
               type="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               value={formData.email}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, email: e.target.value }))
