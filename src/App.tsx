@@ -8,10 +8,20 @@ import WorkSection from "./components/WorkSection";
 import KnowledgeSection from "./components/KnowledgeSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Layout/Footer";
+import { AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import IniTransition from "./components/Layout/IniTransition";
 
 function App() {
+  const [showTransition, setShowTransition] = useState<boolean>(true);
+
+  useEffect(() => setShowTransition(false), []);
+
   return (
     <>
+      <AnimatePresence>
+        {showTransition && <IniTransition key="transition" />}
+      </AnimatePresence>
       <Header />
       <main>
         <HeroSection />
