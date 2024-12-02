@@ -65,7 +65,8 @@ const ContactSection = () => {
               transition: Slide,
             });
           },
-          () => {
+          (e) => {
+            console.log(e);
             // error
             toast.error("Your submission failed. Please try again later.", {
               position: "top-right",
