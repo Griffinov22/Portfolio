@@ -17,7 +17,10 @@ const WorkSection = () => {
   }, []);
 
   useEffect(() => {
+    // wait till maxIndex is set
+    if (maxIndex === 0) return;
     // left arrow has disabled class by default
+
     if (index === maxIndex) {
       const rightBtn = document.getElementById("right-btn");
       rightBtn!.classList.toggle("btn-disable");
@@ -34,31 +37,17 @@ const WorkSection = () => {
     carouselItems.forEach((el) => {
       (el as HTMLElement).style.transform = `translateX(-${375.5 * index}px)`;
     });
-  }, [index]);
+  }, [index, maxIndex]);
 
   const rightArrowClick = () => {
     if (index < maxIndex) {
       setIndex(index + 1);
-      // helper.setCaroArrowColor("left", "blue");
-      // helper.moveCarousel(index);
-
-      // if (index === maxIndex) {
-      //   helper.setCaroArrowColor("right", "grey");
-      // }
     }
   };
 
   const leftArrowClick = () => {
     if (index > 0) {
       setIndex(index - 1);
-      // helper.setCaroArrowColor("right", "blue");
-      // helper.moveCarousel(index);
-
-      if (index === 0) {
-        // helper.setCaroArrowColor("left", "grey");
-      }
-    } else if (index === 0) {
-      // helper.setCaroArrowColor("left", "grey");
     }
   };
 
@@ -93,7 +82,7 @@ const WorkSection = () => {
         <button
           id="left-btn"
           onClick={() => leftArrowClick()}
-          className="caro-btn btn-disable">
+          className="caro-btn">
           <svg
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg">
