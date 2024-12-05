@@ -26,13 +26,50 @@ const IniTransition = () => {
     window.scrollTo(0, 0);
   }
 
+  const movingKeys: Array<number> = [37, 38, 39, 40];
+  const preventDefaultForScrollKeys = (e: KeyboardEvent): false | void => {
+    if (movingKeys.includes(e.keyCode)) {
+      e.preventDefault();
+      return false;
+    }
+  };
+  const preventDefault = (e: Event): void => {
+    e.preventDefault();
+  };
+
+  const wheelEvent: string =
+    "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
+
+  const disableScroll = () => {
+    window.addEventListener("DOMMouseScroll", preventDefault, false); // older FF
+    window.addEventListener(wheelEvent, preventDefault, { passive: false }); // modern desktop
+    window.addEventListener("touchmove", preventDefault, { passive: false }); // mobile
+    window.addEventListener("keydown", preventDefaultForScrollKeys, false);
+  };
+
+  const enableScroll = () => {
+    window.removeEventListener("DOMMouseScroll", preventDefault, false);
+    window.removeEventListener(wheelEvent, preventDefault);
+    window.removeEventListener("touchmove", preventDefault);
+    window.removeEventListener("keydown", preventDefaultForScrollKeys, false);
+  };
+
   return (
     <motion.div
       variants={boxTransition}
       initial="initial"
       exit="exit"
       className="position-absolute d-grid bottom-0 w-100 bg-black"
-      style={{ placeItems: "center", zIndex: 9999 }}>
+      style={{ placeItems: "center", zIndex: 9999 }}
+      onAnimationStart={() => {
+        // prevent scrolling
+        window.scrollTo(0, 0);
+        disableScroll();
+      }}
+      onAnimationComplete={() => {
+        // allow scrolling
+        enableScroll();
+      }}>
       <motion.h2
         variants={textTransition}
         style={{ fontSize: "2rem" }}>
